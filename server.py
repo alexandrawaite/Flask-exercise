@@ -12,7 +12,6 @@ def index():
     return render_template("index.html")
 
 
-
 @app.route('/lucky')
 def lucky_number():
     lucky_num = randint(1, 10)
@@ -22,15 +21,14 @@ def lucky_number():
 
 @app.route('/form')
 def show_form():
-    # add your code here
-    pass
+    return render_template("form.html")
 
 
 @app.route('/greet')
 def offer_greeting():
-    # add your code here
-    pass
-
+    nice_thing = choice(COMPLIMENTS)
+    person = request.args.get("person")
+    return render_template("compliment.html", name=person, compliment=nice_thing)    
 
 if __name__ == "__main__":
     app.run(debug=True)
